@@ -23,7 +23,7 @@ export const TRANSLATIONS = {
     todayBanner: "TODAY",
     isConsultingAt: "Dr. Khan is consulting at",
     today: "today!",
-    instantTicketBlock: "Instant Ticket Block",
+    instantTicketBlock: "Instant Ticket Book",
 
     // Hero
     heroTitle: "Expert pathogenetic homeopathy treatments safely without dynamic surgeries",

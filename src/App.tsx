@@ -102,23 +102,27 @@ export default function App() {
 
       {/* Dynamic consulting schedule assistant (Today Banner) */}
       {todayChamber && (
-        <div className="bg-gradient-to-r from-medical-700 to-medical-900 text-white text-xs sm:text-sm py-3 px-4 font-medium text-center shadow-xs flex flex-wrap items-center justify-center gap-2 border-b border-medical-805" id="live-consult-ticker">
-          <span className="inline-flex items-center gap-1 bg-white/20 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest font-mono">
-            {t.todayBanner} ({currentDayName})
-          </span>
-          <span>
-            {lang === 'bn' ? 'ডাঃ খান আজ ' : lang === 'hi' ? 'डॉ. खान आज ' : t.isConsultingAt + ' '}
-            <strong className="text-medical-200 font-display font-semibold">{todayChamber.name}</strong>
-            {lang === 'bn' ? ' চেম্বার করছেন!' : lang === 'hi' ? ' में परामर्श दे रहे हैं!' : ' ' + t.today}
-          </span>
-          <span className="hidden leading-none sm:inline text-medical-200/50">|</span>
-          <span className="hidden sm:inline font-mono text-medical-100">{todayChamber.daysRaw || todayChamber.timings.split('|')[0]}</span>
-          <button 
-            onClick={() => handleSelectChamberForBooking(todayChamber.id)}
-            className="px-2.5 py-1 bg-white text-medical-800 text-[10px] font-bold rounded-sm hover:bg-medical-50 active:scale-95 transition-all cursor-pointer"
-          >
-            {t.instantTicketBlock}
-          </button>
+        <div className="bg-gradient-to-r from-medical-700 to-medical-900 text-white text-xs sm:text-sm py-3 px-4 font-medium text-center shadow-xs flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 border-b border-medical-805" id="live-consult-ticker">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1 bg-white/20 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest font-mono">
+              {t.todayBanner} ({currentDayName})
+            </span>
+            <span>
+              {lang === 'bn' ? 'ডাঃ খান আজ ' : lang === 'hi' ? 'डॉ. खान आज ' : t.isConsultingAt + ' '}
+              <strong className="text-medical-200 font-display font-semibold">{todayChamber.name}</strong>
+              {lang === 'bn' ? ' চেম্বার করছেন!' : lang === 'hi' ? ' में परामर्श दे रहे हैं!' : ' ' + t.today}
+            </span>
+          </div>
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            <span className="hidden md:inline leading-none text-medical-200/50">|</span>
+            <span className="font-mono text-medical-100 text-[11px] sm:text-xs bg-black/15 md:bg-transparent px-2.5 py-0.5 md:p-0 rounded font-medium">{todayChamber.daysRaw || todayChamber.timings.split('|')[0]}</span>
+            <button 
+              onClick={() => handleSelectChamberForBooking(todayChamber.id)}
+              className="px-2.5 py-1 bg-white text-medical-800 text-[10px] font-bold rounded-sm hover:bg-medical-50 active:scale-95 transition-all cursor-pointer shrink-0 shadow-2xs"
+            >
+              {t.instantTicketBlock}
+            </button>
+          </div>
         </div>
       )}
 

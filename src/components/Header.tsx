@@ -157,11 +157,40 @@ export default function Header({ activeTab, setActiveTab, onBookClick, lang, onL
                       setIsOpen(false);
                       onBookClick();
                     }}
-                    className="w-full bg-medical-600 hover:bg-medical-700 active:scale-98 text-white px-4 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-sm shadow-medical-900/10 cursor-pointer"
+                    className="w-full bg-medical-600 hover:bg-medical-700 active:scale-98 text-white px-4 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-sm shadow-medical-900/10 cursor-pointer mb-4"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>{t.bookAppointment}</span>
                   </button>
+
+                  {/* Language Selector in Mobile Hamburger */}
+                  <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between">
+                    <span className="text-xs font-bold text-slate-500 flex items-center gap-1.5 font-sans">
+                      <Globe className="w-3.5 h-3.5 text-medical-600" />
+                      {lang === 'bn' ? 'ভাষা নির্বাচন' : lang === 'hi' ? 'भाषा चुनें' : 'Select Language'}
+                    </span>
+                    <div className="flex items-center bg-white p-0.5 rounded-lg border border-slate-200">
+                      <button
+                        onClick={() => onLangChange('en')}
+                        className={`px-3 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${lang === 'en' ? 'bg-medical-600 text-white shadow-2xs' : 'text-slate-650 hover:text-slate-900'}`}
+                      >
+                        EN
+                      </button>
+                      <button
+                        onClick={() => onLangChange('bn')}
+                        className={`px-3 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${lang === 'bn' ? 'bg-medical-600 text-white shadow-2xs' : 'text-slate-650 hover:text-slate-900'}`}
+                      >
+                        বাংলা
+                      </button>
+                      <button
+                        onClick={() => onLangChange('hi')}
+                        className={`px-3 py-1 text-xs font-bold rounded-md transition-all cursor-pointer ${lang === 'hi' ? 'bg-medical-600 text-white shadow-2xs' : 'text-slate-650 hover:text-slate-900'}`}
+                      >
+                        हिंदी
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="border-b border-slate-100 my-4"></div>
                 </div>
 

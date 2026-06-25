@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star, MessageSquareCode, Quote, ChevronLeft, ChevronRight, CheckCircle2, Award, HeartHandshake, ShieldCheck, Trophy, Eye, X } from 'lucide-react';
 import { TESTIMONIALS } from '../data';
@@ -19,6 +19,33 @@ export default function Testimonials({ lang = 'en' }: TestimonialsProps) {
   const [filter, setFilter] = useState<string>('all');
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [showAwardModal, setShowAwardModal] = useState<boolean>(false);
+  const [shineTrigger, setShineTrigger] = useState<boolean>(false);
+  const awardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      const timer = setTimeout(() => setShineTrigger(true), 1500);
+      return () => clearTimeout(timer);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const delayTimer = setTimeout(() => {
+            setShineTrigger(true);
+          }, 400);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (awardRef.current) {
+      observer.observe(awardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Dynamic grouping based on filter
   const filteredTestimonials = TESTIMONIALS.filter(item => {
@@ -316,7 +343,7 @@ export default function Testimonials({ lang = 'en' }: TestimonialsProps) {
           {/* Award Details & Image Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
             {/* Details Column */}
-            <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
               <div className="space-y-2">
                 <h4 className="text-xl sm:text-2xl font-black font-display text-slate-900 leading-tight">
                   {awardTranslations.awardName[lang]}
@@ -357,7 +384,7 @@ export default function Testimonials({ lang = 'en' }: TestimonialsProps) {
             </div>
 
             {/* Image Frame Column */}
-            <div className="lg:col-span-5 flex justify-center">
+            <div className="lg:col-span-5 flex justify-center order-1 lg:order-2" ref={awardRef}>
               <div 
                 onClick={() => setShowAwardModal(true)}
                 className="relative aspect-[3/4] max-w-[340px] w-full bg-white rounded-2xl p-3 border border-slate-200 hover:border-amber-400 shadow-md hover:shadow-xl transition-all duration-350 cursor-zoom-in group overflow-hidden"
@@ -365,7 +392,7 @@ export default function Testimonials({ lang = 'en' }: TestimonialsProps) {
                 {/* Top premium color bar */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-amber-300" />
                 
-                <div className="w-full h-full rounded-xl overflow-hidden bg-slate-100 relative">
+                <div className={`w-full h-full rounded-xl overflow-hidden bg-slate-100 relative glass-shine-container ${shineTrigger ? 'glass-shine-active' : ''}`}>
                   <img 
                     src={visionaryAwardImg} 
                     alt="Homeopathy Visionary Award 2025 presentation" 
