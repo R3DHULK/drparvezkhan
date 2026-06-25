@@ -241,7 +241,7 @@ export default function Hero({ onBookClick, onTreatmentsClick, lang }: HeroProps
                     <div className="text-[9px] sm:text-[10px] text-slate-400 font-medium font-sans">{lang === 'bn' ? 'চিকিৎসাকেন্দ্র' : lang === 'hi' ? 'सक्रिय क्लिनिक' : 'Active Chambers'}</div>
                   </div>
                   <div>
-                    <div className="text-sm sm:text-base font-extrabold text-medical-805 font-display">10k+</div>
+                    <div className="text-sm sm:text-base font-extrabold text-medical-805 font-display">100k+</div>
                     <div className="text-[9px] sm:text-[10px] text-slate-400 font-medium font-sans">{lang === 'bn' ? 'সুস্থ রোগী' : lang === 'hi' ? 'स्वस्थ मरीज' : 'Happy Patients'}</div>
                   </div>
                 </div>
