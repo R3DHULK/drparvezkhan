@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Heart, Activity, Phone, MessageSquare, ClipboardCheck, ArrowUp } from 'lucide-react';
+import { Heart, Activity, Phone, MessageSquare, ClipboardCheck, ArrowUp, Facebook, Youtube } from 'lucide-react';
 import { DOCTOR_INFO, CLINIC_CHAMBERS } from '../data';
 import { Language, TRANSLATIONS } from '../translations';
 import clinicLogo from '../assets/images/clinic_logo_1782200965943.jpg';
@@ -56,7 +56,30 @@ export default function Footer({ lang = 'en' }: FooterProps) {
               )}
             </p>
 
-            <div className="pt-2 text-xs text-slate-450 border-t border-slate-800 flex items-center gap-2">
+            <div className="flex items-center gap-3 pt-2">
+              <a 
+                href="https://www.facebook.com/share/17e8P4mVT3/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-blue-600 hover:text-white text-slate-300 text-xs font-bold transition-all border border-slate-700/60 shadow-2xs cursor-pointer"
+                title="Facebook Page"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+                <span>Facebook</span>
+              </a>
+              <a 
+                href="https://youtube.com/@drparvezahmedkhan" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-red-600 hover:text-white text-slate-300 text-xs font-bold transition-all border border-slate-700/60 shadow-2xs cursor-pointer"
+                title="YouTube Channel"
+              >
+                <Youtube className="w-3.5 h-3.5" />
+                <span>YouTube</span>
+              </a>
+            </div>
+
+            <div className="pt-3 text-xs text-slate-450 border-t border-slate-800 flex items-center gap-2">
               <ClipboardCheck className="w-4 h-4 text-medical-400" />
               <span>{t.govtReg} | {t.regNo} <strong>{DOCTOR_INFO.regdNo}</strong></span>
             </div>

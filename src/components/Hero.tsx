@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Award, Briefcase, GraduationCap, Shield, ChevronRight, Phone, MessageSquare } from 'lucide-react';
+import { Award, Briefcase, GraduationCap, Shield, ChevronRight, Phone, MessageSquare, Facebook, Youtube } from 'lucide-react';
 import { DOCTOR_INFO } from '../data';
 import { Language, TRANSLATIONS } from '../translations';
 import doctorPortrait from '../assets/images/doctor_portrait_1782201107939.jpg';
@@ -187,6 +187,33 @@ export default function Hero({ onBookClick, onTreatmentsClick, lang }: HeroProps
                   {DOCTOR_INFO.leadHelplineWhatsapp}
                 </a>
               </div>
+            </div>
+
+            {/* Social Media links inside Hero */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wide">
+                {lang === 'bn' ? 'সোশ্যাল মিডিয়া:' : lang === 'hi' ? 'सोशल मीडिया:' : 'Follow Dr. Khan:'}
+              </span>
+              <a
+                href="https://www.facebook.com/share/17e8P4mVT3/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer shadow-3xs"
+                title="Facebook Page"
+              >
+                <Facebook className="w-3.5 h-3.5 text-blue-600 hover:text-inherit" />
+                <span>Facebook</span>
+              </a>
+              <a
+                href="https://youtube.com/@drparvezahmedkhan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-red-600 hover:text-white text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer shadow-3xs"
+                title="YouTube Channel"
+              >
+                <Youtube className="w-3.5 h-3.5 text-red-500 hover:text-inherit" />
+                <span>YouTube</span>
+              </a>
             </div>
 
           </div>

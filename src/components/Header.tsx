@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Menu, X, Phone, Calendar, Heart, ShieldCheck, Globe } from 'lucide-react';
+import { Menu, X, Phone, Calendar, Heart, ShieldCheck, Globe, Facebook, Youtube } from 'lucide-react';
 import { DOCTOR_INFO } from '../data';
 import { Language, TRANSLATIONS } from '../translations';
 import clinicLogo from '../assets/images/clinic_logo_1782200965943.jpg';
@@ -54,6 +54,28 @@ export default function Header({ activeTab, setActiveTab, onBookClick, lang, onL
           <span>{t.govtReg} | {t.regNo} <strong>{DOCTOR_INFO.regdNo}</strong></span>
         </div>
         <div className="hidden sm:flex items-center gap-4">
+          <div className="flex items-center gap-3 mr-1 border-r border-medical-800 pr-3">
+            <a 
+              href="https://www.facebook.com/share/17e8P4mVT3/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-blue-200 hover:text-white transition-colors flex items-center gap-1 text-[11px] font-semibold"
+              title="Facebook Page"
+            >
+              <Facebook className="w-3.5 h-3.5" />
+              <span>Facebook</span>
+            </a>
+            <a 
+              href="https://youtube.com/@drparvezahmedkhan" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-blue-200 hover:text-white transition-colors flex items-center gap-1 text-[11px] font-semibold"
+              title="YouTube Channel"
+            >
+              <Youtube className="w-3.5 h-3.5 text-red-400" />
+              <span>YouTube</span>
+            </a>
+          </div>
           <span className="flex items-center gap-1">
             <Phone className="w-3.5 h-3.5 text-medical-200 animate-pulse" />
             {t.helpline}: <a href={`tel:${DOCTOR_INFO.leadHelplineCall}`} className="hover:underline font-semibold text-white ml-1">{DOCTOR_INFO.leadHelplineCall}</a>
@@ -220,10 +242,10 @@ export default function Header({ activeTab, setActiveTab, onBookClick, lang, onL
                   <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase">{t.immediateHelpdesk}</span>
                   <span className="text-[9px] font-bold text-medical-850 bg-medical-50 border border-medical-100 px-1.5 py-0.5 rounded-sm">{t.regNo} {DOCTOR_INFO.regdNo}</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
+                 <div className="grid grid-cols-2 gap-2 mb-3">
                   <a
                     href={`tel:${DOCTOR_INFO.leadHelplineCall}`}
-                    className="flex items-center justify-center gap-1.5 py-2.5 border border-medical-200 rounded-xl text-xs font-semibold text-medical-700 hover:bg-medical-50/60 active:scale-98 transition-colors text-center"
+                    className="flex items-center justify-center gap-1.5 py-2.5 border border-medical-200 rounded-xl text-xs font-semibold text-medical-700 hover:bg-medical-50/60 active:scale-98 transition-colors text-center cursor-pointer"
                   >
                     <Phone className="w-3.5 h-3.5" /> {t.callClinic}
                   </a>
@@ -231,9 +253,35 @@ export default function Header({ activeTab, setActiveTab, onBookClick, lang, onL
                     href={`https://wa.me/91${DOCTOR_INFO.leadHelplineWhatsapp}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 py-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-semibold text-emerald-700 hover:bg-emerald-100/60 active:scale-98 transition-colors text-center"
+                    className="flex items-center justify-center gap-1.5 py-2.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-semibold text-emerald-700 hover:bg-emerald-100/60 active:scale-98 transition-colors text-center cursor-pointer"
                   >
                     {t.helpdesk}
+                  </a>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-center gap-2">
+                  <span className="text-[10px] font-bold text-slate-450 uppercase tracking-wide mr-1 w-full text-center sm:w-auto sm:text-left">
+                    {lang === 'bn' ? 'সোশ্যাল মিডিয়া:' : lang === 'hi' ? 'सोशल मीडिया:' : 'Follow Dr. Khan:'}
+                  </span>
+                  <a
+                    href="https://www.facebook.com/share/17e8P4mVT3/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-blue-600 hover:text-white text-slate-650 text-xs font-bold transition-all border border-slate-200 cursor-pointer shadow-3xs"
+                    title="Facebook Page"
+                  >
+                    <Facebook className="w-3.5 h-3.5 shrink-0" />
+                    <span>Facebook</span>
+                  </a>
+                  <a
+                    href="https://youtube.com/@drparvezahmedkhan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-red-600 hover:text-white text-slate-650 text-xs font-bold transition-all border border-slate-200 cursor-pointer shadow-3xs"
+                    title="YouTube Channel"
+                  >
+                    <Youtube className="w-3.5 h-3.5 shrink-0" />
+                    <span>YouTube</span>
                   </a>
                 </div>
               </div>
